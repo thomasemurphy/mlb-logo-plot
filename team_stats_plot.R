@@ -4,7 +4,7 @@ library(tidyverse)
 library(lubridate)
 library(mlbplotR)
 
-setwd('baseball')
+setwd('baseball/mlb-logo-plot')
 
 season <- 2024
 
@@ -32,8 +32,8 @@ team_stats <- team_hitting_stats %>%
 teams_colors_logos <- mlbplotR::load_mlb_teams()
 
 team_stats %>%
-  # select(team_name, avg, obp, slg, ops) %>%
-  arrange(desc(slg_off)) %>%
+  select(team_name, obp_off, slg_off, ops_off) %>%
+  arrange(desc(ops_off)) %>%
   print(n = 30)
 
 to_plot <- team_stats %>%
